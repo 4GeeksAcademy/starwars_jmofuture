@@ -10,14 +10,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             addFav: (fav) => {
                 const store = getStore();
-                if (!store.favorites.some(f => f.uid === fav.uid)) {
+                if (!store.favorites.some(f => f.name === fav.name)) {
                     setStore({ favorites: [...store.favorites, fav] });
                 }
             },
 
-            removeFavByUid: (uid) => {
+            removeFavByUid: (name) => {
                 const store = getStore();
-                const updatedFavorites = store.favorites.filter(fav => fav.uid !== uid);
+                const updatedFavorites = store.favorites.filter(fav => fav.name !== name);
                 setStore({ favorites: updatedFavorites });
             },
 

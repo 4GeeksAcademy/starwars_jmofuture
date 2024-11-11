@@ -15,7 +15,7 @@ const Planets = () => {
       <div className="d-flex" style={{ overflowX: "auto", whiteSpace: "nowrap" }}>
         {store.planets && store.planets.length > 0 ? (
           store.planets.map((planet) => {
-            const isFavorite = store.favorites.some(fav => fav.uid === planet.uid);
+            const isFavorite = store.favorites.some(fav => fav.name === planet.name);
 
             return (
 
@@ -47,7 +47,7 @@ const Planets = () => {
                       className="btn btn-warning"
                       onClick={() => navigate(`/details/planets/${planet.uid}`)}>Saber más!</button>
                     <i className={`fa-solid fa-star ${isFavorite ? "text-danger" : "fa-regular"}`}
-                      onClick={() => isFavorite ? actions.removeFavByUid(planet.uid) : actions.addFav(planet)}
+                      onClick={() => isFavorite ? actions.removeFavByUid(planet.name) : actions.addFav(planet)}
                     ></i>
                   </div>
 

@@ -16,7 +16,7 @@ const Vehicles = () => {
         style={{ overflowX: "auto", whiteSpace: "nowrap" }}>
         {store.vehicles && store.vehicles.length > 0 ? (
           store.vehicles.map((vehicle) => {
-            const isFavorite = store.favorites.some(fav => fav.uid === vehicle.uid);
+            const isFavorite = store.favorites.some(fav => fav.name === vehicle.name);
 
             return (
 
@@ -46,7 +46,7 @@ const Vehicles = () => {
                       className="btn btn-warning"
                       onClick={() => navigate(`/details/vehicles/${vehicle.uid}`)}>Saber más!</button>
                     <i className={`fa-solid fa-star ${isFavorite ? "text-danger" : "fa-regular"}`}
-                      onClick={() => isFavorite ? actions.removeFavByUid(vehicle.uid) : actions.addFav(vehicle)}
+                      onClick={() => isFavorite ? actions.removeFavByUid(vehicle.name) : actions.addFav(vehicle)}
                     ></i>
                   </div>
 

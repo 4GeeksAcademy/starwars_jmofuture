@@ -13,7 +13,7 @@ const People = () => {
       <div className="d-flex" style={{ overflowX: "auto", whiteSpace: "nowrap" }}>
         {store.characters && store.characters.length > 0 ? (
           store.characters.map((character) => {
-            const isFavorite = store.favorites.some(fav => fav.uid === character.uid);
+            const isFavorite = store.favorites.some(fav => fav.name === character.name);
 
             return (
               <div className="card m-2" key={character.uid} style={{ width: "400px", flex: " 0 0 auto", }} >
@@ -41,7 +41,7 @@ const People = () => {
                       className="btn btn-warning"
                       onClick={() => navigate(`/details/people/${character.uid}`)}>Saber más!</button>
                     <i className={`fa-solid fa-star ${isFavorite ? "text-danger" : "fa-regular"}`}
-                      onClick={() => isFavorite ? actions.removeFavByUid(character.uid) : actions.addFav(character)}
+                      onClick={() => isFavorite ? actions.removeFavByUid(character.name) : actions.addFav(character)}
                     ></i>
                   </div>
                 </div>
